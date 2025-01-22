@@ -8,3 +8,5 @@ document.getElementById("benchmark-form").onsubmit = async function(e) {
   const result = await response.text();
   document.getElementById("result").innerText = result;
 };
+
+

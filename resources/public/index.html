@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>String Benchmark</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Algorithm Benchmark</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
-  <h1>String Algorithm Benchmark</h1>
-  <form id="benchmark-form">
-    <label for="algorithm">Algorithm:</label>
-    <select id="algorithm" name="algorithm">
-      <option value="kmp">KMP</option>
-      <option value="rabin-karp">Rabin-Karp</option>
-      <option value="boyer-moore">Boyer-Moore</option>
-    </select><br><br>
+<body class="bg-gray-900 text-white font-sans">
 
-    <label for="pattern">Pattern:</label>
-    <input type="text" id="pattern" name="pattern" required><br><br>
+  <div class="container mx-auto p-6">
+    <h1 class="text-4xl font-bold text-green-500 text-center mb-8 animate__animated animate__fadeIn">String Algorithm Benchmark</h1>
+    
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+      <form id="benchmark-form" class="space-y-4">
+        <div class="flex flex-col">
+          <label for="algorithm" class="text-lg">Algorithm:</label>
+          <select id="algorithm" name="algorithm" class="p-2 rounded-md bg-gray-700 text-white">
+            <option value="kmp">KMP</option>
+            <option value="rabin-karp">Rabin-Karp</option>
+            <option value="boyer-moore">Boyer-Moore</option>
+          </select>
+        </div>
 
-    <label for="text">Text:</label>
-    <textarea id="text" name="text" required></textarea><br><br>
+        <div class="flex flex-col">
+          <label for="pattern" class="text-lg">Pattern:</label>
+          <input type="text" id="pattern" name="pattern" class="p-2 rounded-md bg-gray-700 text-white" required>
+        </div>
 
-    <button type="submit">Run Benchmark</button>
-  </form>
-  <div id="result"></div>
+        <div class="flex flex-col">
+          <label for="text" class="text-lg">Text:</label>
+          <textarea id="text" name="text" class="p-2 rounded-md bg-gray-700 text-white" rows="4" required></textarea>
+        </div>
 
-  <script src="/script.js"></script>
+        <button type="submit" class="w-full p-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition duration-300 ease-in-out">
+          Run Benchmark
+        </button>
+    <div id="result"></div>
+      </form>
+    </div>
+
+    <script src="/script.js"></script>
 </body>
 </html>
+

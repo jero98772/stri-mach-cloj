@@ -15,18 +15,19 @@
               algorithm (get params "algorithm")
               pattern (get params "pattern")
               text (get params "text")
-              result (case algorithm
-                       "kmp" (timed-kmp pattern text)
-                       "rabin-karp" (timed-rabin-karp pattern text)
-                       "boyer-moore" (timed-boyer-moore pattern text)
-                       "Invalid algorithm")]
+              [result execution-time] (case algorithm
+                                        "kmp" (timed-kmp pattern text)
+                                        "rabin-karp" (timed-rabin-karp pattern text)
+                                        "boyer-moore" (timed-boyer-moore pattern text)
+                                        ["Invalid algorithm" 0])]
           {:status 200
            :headers {"Content-Type" "application/json"}
-           :body (pr-str {:result result})}))
+           :body (pr-str {:result result
+                          :execution-time execution-time})}))
 
   (route/not-found "Not Found"))
 
 (def app
   (-> app-routes
-      (wrap-resource "public") ; This will serve files from the 'public' folder
+      (wrap-resource "public")  ;; Serve static files
       wrap-params))
