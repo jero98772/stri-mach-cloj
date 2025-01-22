@@ -6,6 +6,7 @@ document.getElementById("benchmark-form").onsubmit = async function(e) {
     body: new URLSearchParams(formData),
   });
   const result = await response.text();
+  console.log(result,typeof result)
   document.getElementById("result").innerText = result;
 };
 

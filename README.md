@@ -18,11 +18,6 @@ Im learning clojure so the best way to learn it is making proyects, this is the 
 
     lein ring server 
 
-
-## Options
-
-FIXME: listing of options this app accepts.
-
 ## Examples
 
 ...
