@@ -46,33 +46,54 @@
             (recur (inc i) j)))
         @matches))))
 
+(defn calc-hash
+  "Calculate initial hash value for a string"
+  [s start end base prime]
+  (reduce (fn [acc i]
+            (mod (+ (* acc base) (int (nth s i))) prime))
+          0
+          (range start end)))
+
+(defn pow-mod
+  "Calculate (base^exp) % mod efficiently"
+  [base exp prime]
+  (reduce (fn [acc _]
+            (mod (* acc base) prime))
+          1
+          (range exp)))
+
 (defn rabin-karp [pattern text]
   "Rabin-Karp string matching algorithm."
   (let [m (count pattern)
         n (count text)
         base 256
         prime 101
-        pattern-hash (atom 0)
-        text-hash (atom 0)
-        h (mod (reduce (fn [acc _] (mod (* acc base) prime)) 1 (range 1 m)) prime)]
-    (doseq [i (range m)]
-      (swap! pattern-hash (fn [h] (mod (+ (* h base) (int (nth pattern i))) prime)))
-      (swap! text-hash (fn [h] (mod (+ (* h base) (int (nth text i))) prime))))
+        pattern-hash (calc-hash pattern 0 m base prime)
+        first-window-hash (calc-hash text 0 m base prime)
+        h (pow-mod base (dec m) prime)]  ; Precompute base^(m-1) % prime
+    
     (loop [i 0
+           curr-hash first-window-hash
            matches []]
       (if (<= i (- n m))
-        (let [matches (if (= @pattern-hash @text-hash)
-                        (if (= pattern (subs text i (+ i m)))
-                          (conj matches i)
-                          matches)
-                        matches)]
-          (if (< i (- n m))
-            (do
-              (swap! text-hash
-                     (fn [h] (mod (+ (* (- h (* (int (nth text i)) h)) base)
-                                    (int (nth text (+ i m)))) prime)))
-              (recur (inc i) matches))
-            matches))
+        (let [
+              ; Check for match when hashes are equal
+              matches (if (and (= curr-hash pattern-hash)
+                             (= pattern (subs text i (+ i m))))
+                        (conj matches i)
+                        matches)
+              
+              ; Calculate hash for next window
+              next-hash (when (< i (- n m))
+                         (let [to-subtract (mod (* h (int (nth text i))) prime)
+                               after-subtract (mod (- curr-hash to-subtract) prime)
+                               shifted (mod (* after-subtract base) prime)
+                               to-add (int (nth text (+ i m)))]
+                           (mod (+ shifted to-add) prime)))]
+          
+          (recur (inc i)
+                 (or next-hash curr-hash)
+                 matches))
         matches))))
 
 (defn build-bad-char-table [pattern]

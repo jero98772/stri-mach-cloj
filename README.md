@@ -1,16 +1,23 @@
 # stri_mach_cloj
 
-FIXME: description
+Im learning clojure so the best way to learn it is making proyects, this is the firstone... i wanna improve my knowlange in data structures and algorithms doing string maching with algorithms 
+
+* rabin-karp
+
+* boyer-moore
+
+* kmp
 
 ## Installation
 
-Download from http://example.com/FIXME.
-
+    git clone https://github.com/jero98772/stri-mach-cloj
+    
 ## Usage
 
-FIXME: explanation
+    lein run
 
-    $ java -jar stri_mach_cloj-0.1.0-standalone.jar [args]
+    lein ring server 
+
 
 ## Options
 
