@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Benchmark</title>
+</head>
+<body>
+  <h1>String Algorithm Benchmark</h1>
+  <form id="benchmark-form">
+    <label for="algorithm">Algorithm:</label>
+    <select id="algorithm" name="algorithm">
+      <option value="kmp">KMP</option>
+      <option value="rabin-karp">Rabin-Karp</option>
+      <option value="boyer-moore">Boyer-Moore</option>
+    </select><br><br>
+
+    <label for="pattern">Pattern:</label>
+    <input type="text" id="pattern" name="pattern" required><br><br>
+
+    <label for="text">Text:</label>
+    <textarea id="text" name="text" required></textarea><br><br>
+
+    <button type="submit">Run Benchmark</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("benchmark-form").onsubmit = async function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const response = await fetch("/benchmark", {
+        method: "POST",
+        body: new URLSearchParams(formData),
+      });
+      const result = await response.text();
+      document.getElementById("result").innerText = result;
+    };
+  </script>
+</body>
+</html>
