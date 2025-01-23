@@ -18,6 +18,7 @@ Im learning clojure so the best way to learn it is making proyects, this is the 
 
 ## Examples
 
+![](https://github.com/jero98772/stri-mach-cloj/blob/main/doc/pictures/1.png)
 
 ## License
 
