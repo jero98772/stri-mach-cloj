@@ -6,7 +6,7 @@
           result (apply f args)
           end (System/nanoTime)
           execution-time (/ (- end start) 1e6)]  ;; Execution time in milliseconds
-      (println (str "Execution time: " execution-time " ms"))
+      ;;(println (str "Execution time: " execution-time " ms"))
       [result execution-time])))  ;; Return both result and execution time
 
 (defn build-lps [pattern]

@@ -14,21 +14,10 @@ Im learning clojure so the best way to learn it is making proyects, this is the 
     
 ## Usage
 
-    lein run
-
     lein ring server 
 
 ## Examples
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
 
