@@ -1,24 +1,43 @@
-# stri_mach_cloj
+# **Stri_Mach_Cloj**
 
-Im learning clojure so the best way to learn it is making proyects, this is the firstone... i wanna improve my knowlange in data structures and algorithms doing string maching with algorithms 
+This is my first project in Clojure! I'm learning Clojure and improving my knowledge of data structures and algorithms by implementing string-matching algorithms. This project implements the following algorithms:
 
-* rabin-karp
+- **Rabin-Karp**
+- **Boyer-Moore**
+- **Knuth-Morris-Pratt (KMP)**
 
-* boyer-moore
+## **Installation**
 
-* kmp
+Clone the repository:
 
-## Installation
+```bash
+git clone https://github.com/jero98772/stri-mach-cloj
+```
 
-    git clone https://github.com/jero98772/stri-mach-cloj
-    
-## Usage
+## **Usage**
 
-    lein ring server 
+Start the server with Leiningen:
 
-## Examples
+```bash
+lein ring server
+```
 
-![](https://github.com/jero98772/stri-mach-cloj/blob/main/doc/pictures/1.png)
+## **Examples**
+
+Below is an example screenshot of the project in action:
+
+![Example](https://github.com/jero98772/stri-mach-cloj/blob/main/doc/pictures/1.png)
+
+## **Goals**
+
+This project was created as a hands-on way to:
+- Learn Clojure through practical coding.
+- Deepen my understanding of data structures and algorithms.
+- Gain experience with string-matching techniques.
+
+## **Contributing**
+
+Contributions are welcome! If you'd like to improve the project or add new features, feel free to fork the repository and submit a pull request.
 
 ## License
 
